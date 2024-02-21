@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: mohamedtarekguezguez
+  name: simple-webapp-color
+spec:
+  containers:
+    - name: simple-webapp-color
+      image: ghcr.io/horizon-school-of-digital-technologies/simple-webapp-color:latest
+      ports:
+        - containerPort: 8080
+      env:
+        - name: APP_COLOR
+          value: blue
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "50m"
+        limits:
+          memory: "128Mi"
+          cpu: "250m"

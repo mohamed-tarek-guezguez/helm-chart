@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: mohamedtarekguezguez
+  name: simple-webapp-color-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
+    - host: mohamedtarekguezguez.color.horizon-workspaces.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: simple-webapp-color-svc
+                port:
+                  number: 8080
+  tls:
+    - hosts:
+        - mohamedtarekguezguez.color.horizon-workspaces.com
+      secretName: simple-webapp-color-tls
